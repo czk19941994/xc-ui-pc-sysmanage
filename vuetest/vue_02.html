@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>常用指令</title>
+    <script src="vue.min.js"></script>
+</head>
+<body>
+<!--mvvn的视图部分-->
+    <div id="app">
+        {{name}}
+      <!--  v-model双向绑定，dom对象的值改变，v-model的值也会改变-->
+        <input type="text" v-model="num1">*
+        <input type="text" v-model="num2">=
+       <!-- {{Number.parseInt(num1)*Number.parseInt(num2)}}-->
+        <!--v-test 解决闪烁数值差值运算的闪烁问题-->
+        <!--<span v-text="Number.parseInt(num1)*Number.parseInt(num2)"></span>-->
+        <!--事件绑定计算问题-->
+        <span v-text="result"></span>
+        <!--v-on绑定事件 -->
+        <input type="button" v-on:click="change" value="计算"><br>
+        <!--v-bind 可以绑定任意属性-->
+        <!--<a v-bind: href="url"></a>-->
+    </div>
+<script>
+    new Vue({
+        el:"#app",
+        data:{
+            name:"黑马程序员",
+            num1:0,
+            num2:0,
+            result:0,
+            /*url:"www.baidu.com"*/
+        },
+        methods:{
+            change:function(){
+                /*方法中访问本地变量需要运用this关键字*/
+                this.result=Number.parseInt(this.num1)*Number.parseInt(this.num2)
+            }
+        }
+    })
+</script>
+</body>
+</html>

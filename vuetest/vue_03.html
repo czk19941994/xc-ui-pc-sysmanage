@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="vue.min.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!--实现数组的遍历-->
+        <!--v-if实现数组的判断-->
+        <ul>
+            <!--遍历数组-->
+            <li v-for="(item,index) in list" :key="index" v-if="index%2==0">{{index}}--{{item}}</li>
+            <!--遍历json 第一个参数是value，第二个是key-->
+            <li v-for="(value,key) in user">{{key}}:{{value}}</li>
+            <!--遍历数组json-->
+            <li v-for="(item,index) in userList">
+                <div v-if="item.user.username=='吴丹'" style="background-color: greenyellow">
+                {{index}}--{{item.user.username}}
+                </div>
+                <div v-else>
+                    {{index}}--{{item.user.username}}
+                </div>
+            </li>
+        </ul>
+    </div>
+<script>
+    new Vue({
+        el:"#app",
+        data:{
+            list:[1,2,3,4,5],
+            user:{name:"CZK",age:15},
+            userList:[
+                {user:{username:"阿坤",age:20}},
+                {user:{username:"吴丹",age: 119}}
+            ]
+        }
+    })
+
+</script>
+</body>
+</html>
